@@ -4,19 +4,19 @@ import { Profile } from '../types';
 import { Icons } from '../constants';
 
 const HomePage: React.FC = () => {
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('./data/profile.json').then(res => res.json())
-      .then((profileData) => {
-        setProfile(profileData);
-        setLoading(false);
-      }).catch(err => {
-          console.error("Failed to load home page data:", err);
-          setLoading(false);
-      });
-  }, []);
+  const profileData = {
+    "name": "Aathilingam",
+    "title": "Software Developer",
+    "tagline": "Hello. I'm Aathilingam",
+    "bio": "With 4+ years of building large-scale SaaS and high-performance APIs (Laravel, Lumen, and MSS), specialized in building optimized architecture, and complex third-party integrations.",
+    "email": "aathilingam1999@gmail.com",
+    "github": "https://github.com/aathik7",
+    "linkedin": "https://www.linkedin.com/in/aathilingam",
+    "resumeUrl": "#",
+    "avatarUrl": "https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  };
+  const [profile, setProfile] = useState(profileData);
+  const [loading, setLoading] = useState(false);
 
   if (loading || !profile) {
     return (
